@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ikun之家</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="{{ url_for('change_password_1') }}">设置</a></li>
+            <li><a href="{{ url_for('logout') }}">退出</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+<div class="container">
+  <h1>YOLOv8 Object Detection</h1>
+  <div class="content-container">
+  </div>
+  <form method="POST" enctype="multipart/form-data">
+    <input type='file' name="file" accept='image/png, image/jpeg'/>
+    <button type='submit'>Submit</button>
+  </form>
+  {% if detection_results %}
+  <img src="data:image/png;base64,{{detection_results}}"/>
+  {% endif %}
+</div>
+{% endblock %}

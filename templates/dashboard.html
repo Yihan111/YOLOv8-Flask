@@ -1,0 +1,90 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ikun之家</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="{{ url_for('change_password_1') }}">设置</a></li>
+            <li><a href="{{ url_for('logout') }}">退出</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">主页 <span class="sr-only">(current)</span></a></li>
+            <li><a href="/upload">上传图片</a></li>
+            <li><a href="/detect">目标检测</a></li>
+            <li><a href="/segment">目标分割</a></li>
+              <li><a href="/pose">关键点检测</a></li>
+          </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun1.png" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>张衡</h4>
+              <span class="text-muted">测试以及需求的提出</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun2.png" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>姜家淮</h4>
+              <span class="text-muted">后端及算法的实现</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun4.png" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>王凤东</h4>
+              <span class="text-muted">前端页面的美化</span>
+            </div>
+          </div>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun5.jpg" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>毛思桐</h4>
+              <span class="text-muted">UI设计</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun6.jpg" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>胡睿</h4>
+              <span class="text-muted">前后端数据交互</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="../static/kun/kun3.png" width="180" height="180" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>王成</h4>
+              <span class="text-muted">数据库的管理</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
